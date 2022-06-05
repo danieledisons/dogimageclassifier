@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 
-from tensorflow import keras
+# from tensorflow import keras
+import tensorflow as tf
 
 from keras.preprocessing.image import load_img
+load_img = tf.keras.preprocessing.image.load_img
 from keras.preprocessing.image import img_to_array
 from keras.application.vgg16 import preprocess_input
 from keras.application.vgg16 import decode_predictions
@@ -14,7 +16,8 @@ from keras.application.resnet50 import ResNet50
 
 app = Flask(__name__)
 # model = VGG16()
-model = ResNet50()
+# model = ResNet50()
+model = keras.application.ResNet50()
 
 @app.route('/', methods=['GET'])
 def helloworld():
